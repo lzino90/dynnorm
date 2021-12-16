@@ -1,0 +1,62 @@
+\begin{tikzpicture}
+\begin{axis}[%
+ axis lines=left,
+ x   axis line style={->},
+  y   axis line style={-},
+width=\ll cm,
+height=\hh cm,
+scale only axis,
+ylabel shift = -3 pt,
+xmin=-1,
+xmax=1.98,
+xlabel={advantage, $\alpha$},
+ylabel={sensitivity, $\gamma$},
+ymin=0,
+ymax=1,
+legend style={at={(1.0,.5)},legend cell align=left, align=left, draw=none,fill=none, font=\small},
+axis background/.style={fill=white},
+]
+
+\addplot[ultra thick, black,name path = A]
+  table[row sep=crcr]{%
+-1	0.6667\\
+-0.5	0.6667\\
+-0.5	0.1111\\
+};
+
+\addplot[ultra thick, black,name path = D]
+  table[row sep=crcr]{%
+-0.5	0.1111\\
+1	0.1111\\
+1	0\\
+6	0\\
+};
+
+\addplot[draw=none, black,name path = B]
+  table[row sep=crcr]{%
+-1	0\\
+-0.5	0\\
+};
+
+\addplot[draw=none, black,name path = C]
+  table[row sep=crcr]{%
+-0.5	0\\
+6	0\\
+};
+\addplot[draw=none, black,name path = H]
+  table[row sep=crcr]{%
+-1	1\\
+6	1\\
+};
+
+
+    \addplot[cyan!50] fill between[of=H and A];
+        \addplot[cyan!50] fill between[of=H and D];
+          \addplot[myviolet!50] fill between[of=A and B];
+
+
+    
+      \addplot[myred!50] fill between[of=D and C];
+
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+\draw [draw=none,ultra thick,fill=myyellow!30,rounded corners=3] (-.8,-.6) rectangle (0.3,1.3); 
+
+        \draw [draw=none,ultra thick,fill=myviolet!30,rounded corners=3] (-2.1,1.5) rectangle (2,2.5); 
+      \draw [draw=none,ultra thick,fill=myviolet!30,rounded corners=3] (0.5,-.6) rectangle (2.1,2.5); 
+          \draw [draw=none,ultra thick,fill=myviolet!30,rounded corners=3] (-2.1,-.6) rectangle (-1,2); 
+ %    \node at (-1.75,-.4) {\small\color{black}$\mathcal S(t)$};    
+%    \node at (-.45,-.4) {\small\color{black}$\mathcal D(t)$};
+ 
+
+    
+\foreach \x/\y/\n in {-.1/0/1,1.7/.3/4,-.4/1/5,-1.5/.75/6,-1.2/2/7,.2/2.2/8}
+{\node[draw=cyan,  inner sep=0pt, circle, minimum size=10pt,fill=cyan] (\n) at  (\x,\y) {\small{\textcolor{white}{$\n$}}};}
+
+
+\foreach \x/\y/\n in {.9/-.25/2,1.1/1.5/3}
+{\node[draw=myred,  inner sep=0pt, circle, minimum size=10pt,fill=myred] (\n) at  (\x,\y) {\small{\textcolor{white}{$\n$}}};}
+
+
+ \tikzset{mystyle/.style={->,black}} 
+ \tikzset{every node/.style={fill=white}} 
+
+
+% \foreach  \i/\j in {2/1,2/5,2/3,3/1,3/7,4/2,6/1,6/5,7/5,8/3,8/2,3/4,7/6,7/8,4/8,1/5,5/8,5/3,1/4,6/8}
+% {\path (\i) edge[mystyle,-,gray!60]  (\j) ;}
+
+
+
+
+\foreach  \i/\j in {2/1,2/5,2/3,3/1,3/7,4/2,7/5,8/3,8/2}
+{\path (\i) edge[mystyle]  (\j) ;}
+
+\foreach  \i/\j in {3/4,4/3,6/7,7/6,7/8,8/7,6/5}
+{\path (\i) edge[mystyle, bend right=15]  (\j) ;}
+
+\foreach  \i/\j in {6/5}
+{\path (\i) edge[mystyle, bend left=15]  (\j) ;}
+
+\foreach  \i/\j in {4/8}
+{\path (\i) edge[mystyle, bend right=45]  (\j) ;}
+
+\end{tikzpicture}

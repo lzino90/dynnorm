@@ -1,0 +1,142 @@
+\begin{tikzpicture}
+\begin{axis}[%
+ axis lines=left,
+ x   axis line style={->},
+  y   axis line style={-},
+width=\l cm,
+height=\h cm,
+scale only axis,
+xmin=0,
+xmax=0.26,
+xlabel={sensitivity, $\gamma$},
+ylabel={social diffusion},
+ytick={0, .25, .50, .75, 1},
+yticklabels={$0\%$, $25\%$, $50\%$,$75\%$, $100\%$},
+xticklabel style={/pgf/number format/fixed},  
+ymax=1.02,
+legend style={at={(.55,.95)},legend cell align=left, align=left, draw=none,fill=none, font=\footnotesize,  row sep=-.05cm},
+axis background/.style={fill=none},
+]
+
+
+\addplot [ultra thick, color=myred]
+ plot [error bars/.cd, y dir = both, y explicit]
+ table[row sep=crcr, y error plus index=2, y error minus index=3]{%
+0	0	0	0\\
+0.18	0	0	0\\
+0.182	0	0	0\\
+0.184	0	0	0\\
+0.186	0	0	0\\
+0.188	0	0	0\\
+0.19	0	0	0\\
+0.192	0	0	0\\
+0.194	0	0	0\\
+0.196	0	0	0\\
+0.198	0	0	0\\
+0.2	0	0	0\\
+0.202	0	0	0\\
+0.204	0	0	0\\
+0.206	0	0	0\\
+0.208	0	0	0\\
+0.21	0.68	0.0426496	0.0426496\\
+0.212	0.99	0.0019404	0.0019404\\
+0.214	1	0	0\\
+0.216	1	0	0\\
+0.218	1	0	0\\
+0.22	1	0	0\\
+0.222	1	0	0\\
+0.224	1	0	0\\
+0.226	1	0	0\\
+0.228	1	0	0\\
+0.23	1	0	0\\
+0.232	1	0	0\\
+0.234	1	0	0\\
+0.236	1	0	0\\
+0.238	1	0	0\\
+0.24	1	0	0\\
+0.3	1	0	0\\
+};
+\addlegendentry{$k\in\{4,5\}$}
+
+\addplot [ultra thick, color=myviolet]
+ plot [error bars/.cd, y dir = both, y explicit]
+ table[row sep=crcr, y error plus index=2, y error minus index=3]{%
+0	0	0	0\\
+0.18	0	0	0\\
+0.182	0	0	0\\
+0.184	0	0	0\\
+0.186	0	0	0\\
+0.188	0	0	0\\
+0.19	0	0	0\\
+0.192	0	0	0\\
+0.194	0	0	0\\
+0.196	0	0	0\\
+0.198	0	0	0\\
+0.2	0.24	0.0357504	0.0357504\\
+0.202	0.93	0.0127596	0.0127596\\
+0.204	1	0	0\\
+0.206	1	0	0\\
+0.208	1	0	0\\
+0.21	1	0	0\\
+0.212	1	0	0\\
+0.214	1	0	0\\
+0.216	1	0	0\\
+0.218	1	0	0\\
+0.22	1	0	0\\
+0.222	1	0	0\\
+0.224	1	0	0\\
+0.226	1	0	0\\
+0.228	1	0	0\\
+0.23	1	0	0\\
+0.232	1	0	0\\
+0.234	1	0	0\\
+0.236	1	0	0\\
+0.238	1	0	0\\
+0.24	1	0	0\\
+0.3	1	0	0\\
+};
+\addlegendentry{$k\in\{3,4,5,6\}$}
+
+
+\addplot [ultra thick, color=blue]
+ plot [error bars/.cd, y dir = both, y explicit]
+ table[row sep=crcr, y error plus index=2, y error minus index=3]{%
+0	0	0	0\\
+0.18	0	0	0\\
+0.182	0	0	0\\
+0.184	0	0	0\\
+0.186	0	0	0\\
+0.188	0	0	0\\
+0.19	0	0	0\\
+0.192	0	0	0\\
+0.194	0	0	0\\
+0.196	0	0	0\\
+0.198	0	0	0\\
+0.2	0	0	0\\
+0.202	0	0	0\\
+0.204	0	0	0\\
+0.206	0	0	0\\
+0.208	0.01	0.0019404	0.0019404\\
+0.21	0.62	0.0461776	0.0461776\\
+0.212	1	0	0\\
+0.214	1	0	0\\
+0.216	1	0	0\\
+0.218	1	0	0\\
+0.22	1	0	0\\
+0.222	1	0	0\\
+0.224	1	0	0\\
+0.226	1	0	0\\
+0.228	1	0	0\\
+0.23	1	0	0\\
+0.232	1	0	0\\
+0.234	1	0	0\\
+0.236	1	0	0\\
+0.238	1	0	0\\
+0.24	1	0	0\\
+0.3	1	0	0\\
+};
+\addlegendentry{$k\in\{2,3,4,5,6,7\}$}
+
+
+\end{axis}
+\end{tikzpicture}

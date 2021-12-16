@@ -1,0 +1,91 @@
+\begin{tikzpicture}
+\begin{axis}[%
+ axis lines=left,
+ x   axis line style={->},
+  y   axis line style={-},
+width=\llll cm,
+height=\hhh cm,
+scale only axis,
+xmin=0,
+xmax=38,
+xtick={0, 30.5},
+xticklabels={$0$, $T_{n,\varepsilon}$},
+     ytick={0, .5,.9,1},
+yticklabels={$0$, $0.5$, $1-\varepsilon$,1},
+xlabel={time, $t$},
+ylabel shift = -4 pt,
+ylabel={diffusion, $z(t)$},
+ymin=-0.02,
+ymax=1.02,
+legend style={at={(0.4,1)},legend cell align=left, align=left, draw=none,fill=none, font=\small},
+axis background/.style={fill=white},
+]
+
+\addplot[ultra thick, cyan]
+  table[row sep=crcr]{%
+%0	0\\
+1	0.12\\
+2	0.15365\\
+3	0.17525\\
+4	0.19471\\
+5	0.20665\\
+6	0.21604\\
+7	0.22383\\
+8	0.23314\\
+9	0.23957\\
+10	0.24976\\
+11	0.25771\\
+12	0.26449\\
+13	0.26897\\
+14	0.27694\\
+15	0.28653\\
+16	0.29678\\
+17	0.30566\\
+18	0.31436\\
+19	0.32753\\
+20	0.3378\\
+21	0.35278\\
+22	0.37132\\
+23	0.39534\\
+24	0.42325\\
+25	0.46008\\
+26	0.5037\\
+27	0.56195\\
+28	0.64435\\
+29	0.74553\\
+30	0.85945\\
+31	0.95411\\
+32	0.99445\\
+33	0.99993\\
+34	1\\
+35	1\\
+36	1\\
+37	1\\
+38	1\\
+39	1\\
+40	1\\
+41	1\\
+42	1\\
+43	1\\
+44	1\\
+45	1\\
+46	1\\
+47	1\\
+48	1\\
+49	1\\
+};
+
+\addplot[thick, dashed]
+  table[row sep=crcr]{%
+0	0.9\\
+30.5	0.9\\
+};
+
+\addplot[thick, dashed]
+  table[row sep=crcr]{%
+30.5	0\\
+30.5	0.9\\
+};
+
+\end{axis}
+\end{tikzpicture}
