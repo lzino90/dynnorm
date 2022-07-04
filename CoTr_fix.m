@@ -1,4 +1,4 @@
-function [z] = CoTr(n,k,alpha,gamma,beta,T,pl)
+function [z] = CoTr_fix(n,k,alpha,gamma,beta,T,pl)
 %CoTr(n,k,alpha,gamma,beta,pl) simulates the innovation diffusion model with dynamic norms proposed in the paper "Facilitating innovation diffusion in social networks using dynamic norms". 
 %Parameters:
 %n: number of agents;
@@ -21,16 +21,16 @@ trend=0; %initial trend
 if z(2)>0
     trend=1;
 end
-
+y=(rand(n,1)>gamma);
 
 for t=3:T
     switch trend
         case 1
-                x(:,t)=1+(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)-1); %probabilistic update rule
+                x(:,t)=1+y.*((binornd(k,z(t-1)/n,n,1)>=ks)-1); %probabilistic update rule
         case 0
-                x(:,t)=x(:,t-1)+(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)-x(:,t-1)); %probabilistic update rule
+                x(:,t)=x(:,t-1)+y.*((binornd(k,z(t-1)/n,n,1)>=ks)-x(:,t-1)); %probabilistic update rule
         case -1
-                x(:,t)=(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)); %probabilistic update rule
+                x(:,t)=y.*((binornd(k,z(t-1)/n,n,1)>=ks)); %probabilistic update rule
     end
     z(t)=sum(x(:,t)); %update the count of adopters
     if z(t)>z(t-1) %update the trend

@@ -1,4 +1,4 @@
-function [z] = CoTr(n,k,alpha,gamma,beta,T,pl)
+function [z] = CoTr_Kincrease(n,k,alpha,gamma,beta,T,K,pl)
 %CoTr(n,k,alpha,gamma,beta,pl) simulates the innovation diffusion model with dynamic norms proposed in the paper "Facilitating innovation diffusion in social networks using dynamic norms". 
 %Parameters:
 %n: number of agents;
@@ -9,7 +9,7 @@ function [z] = CoTr(n,k,alpha,gamma,beta,T,pl)
 %T: simulation time; 
 %pf: type 'y' if you want to plot the temporal evolution, or 'n' if you do %not want it. If omitted, 'n' is set by default. 
 %Realized by L. Zino.
-if nargin==6
+if nargin==7
     pl='n';
 end
 ks=floor(k/(2+alpha))+1; %compute the pi function
@@ -24,21 +24,12 @@ end
 
 
 for t=3:T
-    switch trend
-        case 1
-                x(:,t)=1+(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)-1); %probabilistic update rule
-        case 0
-                x(:,t)=x(:,t-1)+(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)-x(:,t-1)); %probabilistic update rule
-        case -1
-                x(:,t)=(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)); %probabilistic update rule
-    end
+    x(:,t)=trend+(rand(n,1)>gamma).*((binornd(k,z(t-1)/n,n,1)>=ks)-trend); %probabilistic update rule
     z(t)=sum(x(:,t)); %update the count of adopters
-    if z(t)>z(t-1) %update the trend
+    if z(t)>=z(t-1)+K/n || z(t)==n %update the trend
         trend=1; 
-    elseif z(t)==z(t-1)
+    elseif z(t)<=z(t-1)-K/n 
         trend=0;
-    else
-        trend=-1;
     end
 end
 z=z/n;
